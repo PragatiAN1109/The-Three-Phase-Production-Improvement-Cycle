@@ -1,4 +1,6 @@
-# Your AI System Isn't Broken — It Just Can't Fix Itself
+# Chapter 32 — The Three-Phase Production Improvement Cycle: Monitor, Debug, Improve
+
+[Article](https://the-three-phase-production-improvem-sigma.vercel.app/) · [Notebook](https://github.com/PragatiAN1109/The-Three-Phase-Production-Improvement-Cycle/blob/main/monitor_debug_improve_multi_agent.ipynb)
 
 ## The three-phase architecture that separates AI systems that degrade from AI systems that improve — and why no model upgrade can substitute for it
 
