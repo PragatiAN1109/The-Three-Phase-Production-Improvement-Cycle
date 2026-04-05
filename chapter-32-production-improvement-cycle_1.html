@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 32 — The Three-Phase Production Improvement Cycle</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --text: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --bg: #faf8f5;
+    --bg-aside: #f0ece6;
+    --bg-code: #2b2b2b;
+    --accent: #8b1a1a;
+    --accent-light: #c44d4d;
+    --rule: #c4b8a8;
+    --chapter-num: #b8a88c;
+    --margin-note: #6b5e4f;
+    --highlight: #fdf0d5;
+    --signal-green: #2d6a4f;
+    --signal-red: #9d0208;
+    --signal-amber: #bb6b00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 17px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .chapter-container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  /* Chapter Header */
+  .chapter-header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .chapter-number {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--chapter-num);
+    margin-bottom: 0.75rem;
+  }
+
+  .chapter-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .chapter-subtitle {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Section Headers */
+  h2 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Prose */
+  p {
+    margin-bottom: 1.1rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  /* Epigraph / Hook */
+  .epigraph {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--bg-aside);
+    line-height: 1.65;
+  }
+
+  .epigraph .attribution {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--margin-note);
+  }
+
+  /* Aside / Callout Boxes */
+  .aside-box {
+    background: var(--bg-aside);
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .aside-box .aside-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Failure Case Box */
+  .failure-box {
+    background: #fdf2f2;
+    border-left: 3px solid var(--signal-red);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .failure-box .failure-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--signal-red);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Equation blocks */
+  .equation {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+    background: var(--bg-aside);
+    padding: 1rem 1.5rem;
+    margin: 1.25rem 0;
+    border-radius: 2px;
+    overflow-x: auto;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .equation .eq-label {
+    float: right;
+    color: var(--margin-note);
+    font-size: 0.82rem;
+  }
+
+  /* Code / Pseudocode */
+  .code-block {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    background: var(--bg-code);
+    color: #e0ddd5;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 3px;
+    overflow-x: auto;
+    line-height: 1.65;
+    white-space: pre;
+  }
+
+  .code-block .comment { color: #7a9a65; }
+  .code-block .keyword { color: #c9a0dc; }
+  .code-block .string { color: #ce9178; }
+  .code-block .number { color: #b5cea8; }
+  .code-block .func { color: #dcdcaa; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+  }
+
+  thead th {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--rule);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+  }
+
+  tbody td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .table-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--margin-note);
+    margin-top: -0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Figure placeholder */
+  .figure {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .figure-placeholder {
+    background: var(--bg-aside);
+    border: 1px dashed var(--rule);
+    padding: 2rem;
+    color: var(--margin-note);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+  }
+
+  .figure-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--margin-note);
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Activities Section */
+  .activity {
+    background: #f5f7f0;
+    border-left: 3px solid var(--signal-green);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .activity .activity-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--signal-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .activity p {
+    text-align: left;
+  }
+
+  /* Section Numbering */
+  .section-num {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    color: var(--chapter-num);
+    margin-right: 0.4rem;
+  }
+
+  /* Inline code */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    background: var(--bg-aside);
+    padding: 0.1em 0.35em;
+    border-radius: 2px;
+  }
+
+  /* Threshold visualization */
+  .threshold-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 1rem 0;
+    height: 28px;
+    border-radius: 3px;
+    overflow: hidden;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .threshold-bar .zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+  }
+
+  .zone-green { background: var(--signal-green); }
+  .zone-amber { background: var(--signal-amber); }
+  .zone-red { background: var(--signal-red); }
+
+  /* Payoff line */
+  .payoff {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Week markers for failure case */
+  .week-marker {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal-red);
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Print */
+  @media print {
+    body { font-size: 11pt; background: white; }
+    .chapter-container { max-width: 100%; padding: 0; }
+    .code-block { background: #f0f0f0; color: #222; }
+  }
+
+  @media (max-width: 600px) {
+    html { font-size: 15px; }
+    .chapter-container { padding: 1.5rem 1rem 4rem; }
+    .chapter-title { font-size: 1.65rem; }
+  }
+</style>
+</head>
+<body>
+<div class="chapter-container">
+
+<!-- ============================================================ -->
+<!-- CHAPTER HEADER -->
+<!-- ============================================================ -->
+
+<header class="chapter-header">
+  <div class="chapter-number">Chapter 32</div>
+  <h1 class="chapter-title">The Three-Phase Production Improvement Cycle:<br>Monitor, Debug, Improve</h1>
+  <div class="chapter-subtitle">Why architecture — not model quality — determines whether a multi-agent system can get better</div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OPENING HOOK -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.1</span> The Forty-Minute Fix That Took Six Weeks</h2>
+
+<p>On March 14, a production multi-agent system processing financial documents for a midsize brokerage started getting things subtly wrong. Not dramatically wrong — not the kind of wrong that triggers alarms. The kind of wrong that hides in spreadsheets.</p>
+
+<p>A retrieval agent pulling regulatory filings from a vector store began returning documents from the wrong fiscal year about 4.2 percent of the time. Downstream, a summarization agent folded those mismatched filings into analyst reports. Further downstream, an orchestrator routed the reports to clients. Eleven compliance filings were submitted to the SEC based on flawed summaries.</p>
+
+<p>No alarm fired. No log turned red. The error rate had crept from 1.1 percent in January upward by roughly 0.3 percentage points per week. An engineer glanced at the number during a Monday standup, said "retrieval noise," and moved on.</p>
+
+<p>The monitoring stack was expensive and well-integrated. It faithfully recorded every request, every latency spike, every token count. It did exactly what it was built to do: <em>observe.</em></p>
+
+<p>What it did not do was <em>decide.</em> It never declared that 4.2 percent was unacceptable. It never distinguished a 1.1 percent baseline from a 4.2 percent degradation. It never triggered a debugging workflow, isolated the retrieval agent, or prevented the summarizer from consuming poisoned inputs. For six weeks, it watched.</p>
+
+<p>By the time a junior analyst noticed conflicting effective dates in two client reports, the root cause had migrated through three layers of infrastructure. The retrieval agent's embedding index had drifted because a nightly reindexing job had silently started timing out — a downstream consequence of a database migration three sprints earlier that increased average document length by 18 percent. The reindexing job didn't fail outright. It timed out on the largest documents and succeeded on the rest, producing an index that was complete enough to avoid hard errors but skewed enough to quietly degrade retrieval precision. The monitoring system recorded the timeout events. It did not know they mattered.</p>
+
+<p>The team spent nine days debugging. They first suspected the summarization agent's prompt template, recently updated. They rolled it back. The error rate did not change. They then suspected the orchestrator's routing logic. They audited three hundred routing decisions. The routing was correct. On day seven, an engineer grepping through timeout logs found the correlation between document length and reindexing failure. The fix took forty minutes.</p>
+
+<div class="payoff">The fix took forty minutes. The investigation took nine days. The system had been wrong for six weeks. The monitoring had been perfect the entire time.</div>
+
+<!-- ============================================================ -->
+<!-- THE QUESTION -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.2</span> The Question That Changes Everything</h2>
+
+<p>If you are watching everything and improving nothing, what exactly is your monitoring for?</p>
+
+<!-- ============================================================ -->
+<!-- NARRATIVE BRIDGE -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.3</span> Observation Is Not Intervention</h2>
+
+<p>Most teams building monitoring for AI systems share an unexamined assumption: <em>if you can see what is happening, you can fix what is happening.</em> Visibility produces understanding; understanding produces action; action produces improvement. This is the folk epistemology of observability, and it works tolerably well for stateless, deterministic systems where a CPU spike has a small number of possible causes and a well-understood fix.</p>
+
+<p>Multi-agent systems violate every premise of that model. They are <strong>stateful</strong> — one agent's output becomes another's context, and that context accumulates across turns, sessions, and workflows. They are <strong>non-deterministic</strong> — the same input to the same agent can produce meaningfully different outputs depending on prompt construction, retrieval results, and the stochastic nature of language model sampling. They are <strong>compositional</strong> — the system's behavior is the product of agent interactions, not the sum of individual behaviors, and those interactions are mediated by data flows that are themselves subject to degradation. And they are <strong>opaque at the boundaries</strong> — the interface between a retrieval agent and a summarization agent is a natural language string, not a typed API contract, so degradation in one agent's output can propagate downstream as subtly wrong answers rather than type errors or null responses.</p>
+
+<p>In such systems, visibility without decision logic is not monitoring. It is surveillance footage — useful after the crime, useless during it.</p>
+
+<p>What the financial document system lacked was not data. It was <em>architecture.</em> Specifically, the three-phase structure that converts raw signals into enforced interventions: a monitor that evaluates health against explicit thresholds, a debugger that activates on threshold breach and isolates root causes through structured diagnosis, and an improver that modifies components based on validated diagnoses rather than guesses.</p>
+
+<p>The distinction between a system that records its own behavior and a system that acts on its own behavior is the central architectural concern of this chapter. It is not a tooling problem — you can build the wrong architecture with excellent tools. It is not a model quality problem — you can run the most capable foundation model available and still fail to improve, because improvement is a property of the surrounding system, not the model inside it. The claim this chapter will make and defend is structural: <strong>the capacity to improve is determined by architecture, and the specific architecture that enables improvement has three phases with thresholds as the binding constraint between them.</strong></p>
+
+<!-- ============================================================ -->
+<!-- CORE CLAIM -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.4</span> Core Claim</h2>
+
+<div class="aside-box">
+  <div class="aside-label">Architectural Thesis</div>
+  <p>Production multi-agent systems do not improve through observation alone. They require a threshold-driven <strong>Monitor → Debug → Improve</strong> architecture that converts signals into enforced intervention decisions. In the absence of explicit thresholds, gradual degradation is normalized as noise, causing delayed debugging, incorrect root-cause analysis, and ineffective fixes. The threshold — not the model, not the dashboard, not the engineer's intuition — is the mechanism that separates systems that degrade from systems that recover.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- MECHANISM -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.5</span> The Three-Phase Architecture</h2>
+
+<p>The improvement cycle is not a suggestion. It is a control loop with formally distinct phases, each with defined inputs, outputs, and transition conditions. You do not enter the Debug phase because someone feels concerned. You enter it because a quantitative threshold has been exceeded. You do not enter the Improve phase because someone has a theory about what went wrong. You enter it because the Debug phase has produced a validated root-cause analysis with sufficient evidence to justify a specific change. Each transition is gated. Each gate has a criterion. The criteria are set before the system runs, not discovered after it fails.</p>
+
+<div class="figure">
+  <div class="figure-placeholder">
+    [ Figure 32.1 — The Three-Phase Cycle as a Control Loop ]<br><br>
+    MONITOR → (threshold breach) → DEBUG → (root cause report, confidence ≥ 0.7) → IMPROVE → (metric validated) → MONITOR<br><br>
+    With rollback paths: IMPROVE → (metric not validated) → DEBUG<br>
+    And hold paths: DEBUG → (confidence &lt; 0.7) → DEBUG (continue trace collection)
+  </div>
+  <div class="figure-caption"><strong>Figure 32.1.</strong> The Monitor → Debug → Improve cycle as a gated control loop. Each transition is conditional on a quantitative criterion. The cycle does not advance on intuition, seniority, or urgency.</div>
+</div>
+
+<p>The three phases are not equal in duration or cost. The Monitor phase runs continuously at negligible marginal cost — it computes metrics over data already being collected. The Debug phase is expensive: it requires trace retrieval, comparison, and either automated or human analysis. The Improve phase is cheapest in analysis but most consequential in risk, because it modifies a production system. This cost asymmetry is why thresholds matter so much. A threshold that is too tight activates the expensive Debug phase constantly. A threshold that is too loose delays activation until degradation is severe — making the Debug phase harder (more changes have accumulated, more traces must be examined) and the Improve phase riskier (the system is further from baseline, the fix must be larger).</p>
+
+<h3><span class="section-num">32.5.1</span> Phase One: Monitor</h3>
+
+<p>The Monitor phase is the steady-state operating mode. Its job is not to watch everything — that is what logging does, and logging is infrastructure, not architecture. The Monitor phase computes a bounded set of health metrics, compares them against pre-defined thresholds, and emits one of three signals: <strong>nominal, degraded, or critical.</strong> That is all it does. It does not diagnose. It does not suggest fixes. It does not generate reports for humans to interpret at their leisure. It evaluates and classifies.</p>
+
+<p>The health metrics for a multi-agent system are not web-application metrics. A multi-agent system can return HTTP 200 on every request while producing answers that are materially wrong, because the failure mode is <em>semantic</em>, not structural. The metrics that matter operate at three levels.</p>
+
+<p>At the <strong>agent level</strong>, you measure task completion rate (the fraction of requests where the agent produces an output satisfying its contract), latency <em>distribution</em> (not mean latency but the shape of the distribution — a bimodal latency profile indicates intermittent tool failure rather than general slowness), and retry rate (the number of times an agent must re-invoke a tool or re-query a data source before succeeding, an early indicator of upstream degradation that appears long before completion failures).</p>
+
+<p>At the <strong>coordination level</strong>, you measure handoff fidelity (the fraction of inter-agent messages arriving structurally complete and semantically coherent, assessed by schema validation or a lightweight evaluator model), routing accuracy (the fraction of requests the orchestrator sends to the correct downstream agent, requiring a ground-truth routing table or sampling-based audit), and context propagation integrity (whether information established in turn <em>n</em> is still accurately represented in turn <em>n + k</em>, measurable by injecting known facts and checking for their presence and accuracy downstream).</p>
+
+<p>At the <strong>outcome level</strong>, you measure end-to-end correctness (the fraction of final outputs meeting a defined quality bar, assessed by human evaluation, automated evaluation against gold-standard answers, or both), user-facing error rate (explicit failures, refusals, nonsensical outputs), and business-metric alignment (whatever downstream metric the system exists to serve — in the financial document case, the accuracy of compliance filings).</p>
+
+<div class="aside-box">
+  <div class="aside-label">Scale Consciousness — The Three Metric Levels</div>
+  <p>Agent-level metrics operate at the scale of a single function call: milliseconds, individual tool invocations, one prompt-response pair. Coordination-level metrics operate at workflow scale: seconds to minutes, multi-agent message chains, context propagation across handoffs. Outcome-level metrics operate at business-process scale: hours to days, aggregated correctness, downstream consequences. When a coordination metric degrades, the cause is almost always at the agent level, but the symptom appears at the outcome level. The Monitor phase must track all three scales simultaneously because degradation propagates upward through them with a delay that makes single-scale monitoring blind to the signal's origin.</p>
+</div>
+
+<p>Each metric has a threshold. The threshold is not a target — it is a <em>trigger.</em> When an agent-level retry rate exceeds its threshold over a rolling four-hour window, the Monitor phase does not log a warning and wait for a human. It emits a degraded signal and transitions the system into the Debug phase for that component. The numbers are calibrated during a baseline period when the system is operating at acceptable quality, set at a distance from baseline that represents meaningful degradation rather than normal variance. In the financial document system, the retrieval agent's error rate baseline was 1.1 percent with a standard deviation of 0.4 percent. A threshold at two standard deviations above baseline — 1.9 percent — would have triggered the Debug phase in the second week of degradation, not the sixth. The choice of two versus three standard deviations is an engineering decision with quantifiable consequences: tighter thresholds catch problems earlier but generate more false positives; looser thresholds are quieter but slower. You resolve this not by intuition but by measuring the cost of a false positive against the cost of delayed detection, and setting the threshold where the expected costs cross.</p>
+
+<div class="equation">
+  threshold = μ_baseline + k · σ_baseline<br><br>
+  where k is chosen such that:<br>
+  P(false_positive) · C_debug &lt; P(missed_detection) · C_degradation
+  <span class="eq-label">(32.1)</span>
+</div>
+
+<p>The difficulty is not the math. It is the organizational discipline required to set C_debug and C_degradation honestly and then enforce the threshold they imply. Most teams skip this step. They set thresholds by gut feel, or they don't set them at all, and then they wonder why their monitoring doesn't drive improvement.</p>
+
+<h3><span class="section-num">32.5.2</span> Phase Two: Debug</h3>
+
+<p>The Debug phase is activated by a threshold breach, not by a meeting. Its purpose is root-cause isolation: given that metric <em>X</em> has exceeded its threshold at level <em>L</em>, identify the specific component, data flow, or interaction responsible. This is the phase most teams skip or collapse into the Improve phase, and it is the phase where incorrect root-cause analysis causes the most damage.</p>
+
+<p>The fundamental problem of debugging a multi-agent system is that the symptom and the cause are usually at different levels, separated by time. The financial document system's symptom was at the outcome level (incorrect compliance reports), but the cause was at the agent level (retrieval embedding drift), mediated by a coordination-level data flow (the retrieval-to-summarization handoff), and originating in an infrastructure event (the database migration) that preceded the symptom by three weeks. A debugging process that starts at the symptom and works backward through the system's causal graph will find the root cause. A process that starts at the symptom and immediately hypothesizes about the most recently changed component — as the team did when they rolled back the prompt template — wastes time confirming the wrong hypothesis before eventually finding the right one.</p>
+
+<p>Structured debugging for multi-agent systems follows a specific protocol. First, identify the metric that breached its threshold and the level at which it operates. Second, trace the data flow backward from the breached metric to its upstream dependencies. For each upstream dependency, check whether that component's own agent-level metrics have also degraded. If they have, the cause is upstream — continue tracing. If they have not, the cause is at the current level: the component is receiving healthy inputs and producing unhealthy outputs, which localizes the fault. Third, once the component is isolated, examine its internal state — prompt template, tool configurations, data sources, recent execution traces. Compare degraded traces against baseline traces from the calibration period. The difference is the diagnosis.</p>
+
+<div class="code-block"><span class="comment">// Debug Phase Protocol — Pseudocode</span>
+
+<span class="keyword">function</span> <span class="func">debug</span>(breached_metric, level):
+    component = <span class="func">identify_owner</span>(breached_metric)
+    upstream_deps = <span class="func">get_upstream</span>(component)
+
+    <span class="keyword">for</span> dep <span class="keyword">in</span> upstream_deps:
+        dep_health = <span class="func">check_agent_metrics</span>(dep)
+        <span class="keyword">if</span> dep_health == DEGRADED:
+            <span class="keyword">return</span> <span class="func">debug</span>(dep.breached_metric, dep.level)  <span class="comment">// recurse upstream</span>
+
+    <span class="comment">// All upstream deps healthy → fault is in this component</span>
+    baseline_traces = <span class="func">get_baseline_traces</span>(component)
+    degraded_traces = <span class="func">get_recent_traces</span>(component, window=<span class="string">"4h"</span>)
+    diff = <span class="func">compare_traces</span>(baseline_traces, degraded_traces)
+
+    <span class="keyword">return</span> RootCauseReport(
+        component=component,
+        fault_type=<span class="func">classify_diff</span>(diff),
+        evidence=diff,
+        confidence=<span class="func">compute_confidence</span>(diff)
+    )</div>
+
+<p>The output of the Debug phase is not a fix. It is a <strong>Root Cause Report</strong> — a structured document that identifies the component, describes the fault, presents the evidence (as trace comparisons and metric deltas), and assigns a confidence score based on the strength of the evidence. If the confidence score is below a defined threshold (typically 0.7 for automated transitions, lower if human review is in the loop), the Debug phase continues with additional trace collection rather than advancing to Improve with an uncertain diagnosis.</p>
+
+<p>This is where discipline matters most. The pressure to "just fix something" is enormous when a system is degraded in production. But an Improve phase based on a wrong diagnosis does not fix the system — it introduces a second change into an already-degraded environment, making the next debugging cycle harder. The Debug phase's job is to resist that pressure by requiring evidence before action.</p>
+
+<h3><span class="section-num">32.5.3</span> Phase Three: Improve</h3>
+
+<p>The Improve phase consumes a Root Cause Report and produces a specific, scoped change to the system. Not a model upgrade. Not a general prompt rewrite. A targeted modification to the component identified in the Debug phase, designed to address the specific fault described in the report. In the financial document case, the correct improvement was not "upgrade the retrieval model" or "add more documents to the training set." It was: increase the reindexing job's timeout from 120 seconds to 300 seconds, add a completeness check comparing the number of documents in the new index against the old, and set a threshold on that completeness ratio at 0.98 below which the reindexing job is considered failed and the old index is retained.</p>
+
+<p>The scoping is critical. An Improve action broader than the diagnosis introduces uncontrolled variables. If you change the prompt template and the reindexing timeout simultaneously, and the error rate drops, you do not know which change was responsible. If the error rate rises, you do not know which change made it worse. The Improve phase operates under the same logic as a controlled experiment: one variable changes at a time, and the effect is measured against the same metrics that triggered the Debug phase. If the metric returns to within baseline bounds after the change, the improvement is validated. If it does not, the improvement is rolled back and the Debug phase resumes with additional evidence.</p>
+
+<!-- ============================================================ -->
+<!-- THE COMPLICATION -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.6</span> Where the Clean Model Gets Messy</h2>
+
+<p>If the three-phase cycle were as clean in practice as the preceding section suggests, this chapter would be half as long. The model above assumes that metrics are independent, that degradation is monotonic, that root causes are singular, and that improvements are additive. Every one of these assumptions fails in production multi-agent systems, and the failures reveal where the architecture must be <em>extended</em> rather than abandoned.</p>
+
+<p>The first complication is <strong>metric coupling</strong>. Agent-level retry rate and coordination-level handoff fidelity are not independent variables. When a retrieval agent retries, the retry takes longer, shifting its latency distribution rightward. The orchestrator, which may have a timeout on downstream calls, begins to see more timeouts — classified as coordination failures even though the root cause is at the agent level. The Monitor phase, treating these as independent threshold breaches, reports two problems when there is one. The solution is not to abandon per-metric thresholds but to add a <strong>correlation layer</strong> between Monitor and Debug that groups co-occurring breaches by temporal proximity and causal graph adjacency before passing them to the debugger. The three phases remain; the transition between Monitor and Debug now includes a preprocessing step that reduces diagnostic noise.</p>
+
+<p>The second complication is <strong>intermittent degradation</strong>. Not all degradation is a steady climb from 1.1 percent to 4.2 percent. Some degradation is spiky — a retrieval agent fails badly on a specific class of queries (for example, documents from a particular jurisdiction) while performing normally on all others. The aggregate metric may not breach its threshold because the problematic class is a small fraction of total traffic. But the users who issue those queries experience severe failure. The principle: <strong>thresholds must be set at the granularity of the failure mode.</strong> If the system can fail in ways invisible at the aggregate level, the monitoring must operate at finer granularity than the aggregate.</p>
+
+<p>The third complication is <strong>multi-cause degradation</strong>. In systems older than six months, two or more components commonly degrade simultaneously from independent causes. The Debug phase's trace-backward protocol must fork, and the two root-cause analyses must proceed independently. This requires the Debug phase to maintain a queue of open investigations rather than operating as a single linear trace.</p>
+
+<p>The fourth and most pernicious complication is <strong>improvement interference</strong>. Suppose the Debug phase identifies two root causes, and the Improve phase fixes one. The fix changes the system's behavior, which changes the data flowing through the second degraded component. If the second component's degradation was measured before the first fix, the measurement may no longer be valid. The Improve phase must therefore re-validate <em>all</em> open Debug reports after each change, not only the metric associated with the change it just made. This is expensive. It is also necessary. Skipping it produces oscillatory behavior — fix A, break B, fix B, re-break A — that teams describe as "the system being flaky" when the actual cause is an Improve phase that ignores cross-component coupling.</p>
+
+<!-- ============================================================ -->
+<!-- FAILURE CASE -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.7</span> Failure Case: The System That Optimized Itself Into Incoherence</h2>
+
+<div class="failure-box">
+  <div class="failure-label">Documented Failure — Normalization of Gradual Degradation</div>
+
+<p>The system was a five-agent pipeline for automated customer support at a SaaS company. An intake classifier routed tickets to domain-specific agents (billing, technical, account management), which drafted responses that a tone-adjustment agent polished before sending to customers. The system handled 2,400 tickets per day with CSAT stable at 4.1 out of 5.0 for three months.</p>
+
+<p><span class="week-marker">Week One</span>
+The billing agent's average response latency climbed from 1.8 seconds to 2.3 seconds. The monitoring dashboard displayed a yellow dot — a cosmetic color rule someone had set during initial deployment that marked anything above 2.0 seconds as yellow. No threshold existed. No action was taken.</p>
+
+<p><span class="week-marker">Week Two</span>
+The intake classifier's routing accuracy dropped from 94 percent to 89 percent. Five percent of billing queries began arriving at the technical support agent, which lacked the context to answer them correctly. The technical agent did not refuse — it attempted to answer, producing responses that were grammatically correct, structurally complete, and factually wrong. The tone-adjustment agent polished these wrong answers into professional-sounding wrong answers. CSAT for billing-related tickets dropped from 4.1 to 3.6. Aggregate CSAT, diluted across all ticket types, dropped from 4.1 to 3.95. The weekly report read: "CSAT stable at ~4.0."</p>
+
+<p><span class="week-marker">Week Three</span>
+A spike in follow-up tickets — customers reopening issues marked resolved. The follow-up rate climbed from 8 percent to 14 percent. The team attributed this to a recent change in billing policy generating customer confusion. A reasonable hypothesis. Completely wrong. The spike came from misrouted billing tickets receiving incorrect technical-support answers. But nothing in the system's monitoring had told them <em>the system</em> was broken — so they looked for the explanation in the business.</p>
+
+<p><span class="week-marker">Week Four</span>
+The team decided to "improve" the system by updating the tone-adjustment agent's prompt to be "more empathetic" in response to the perceived billing confusion. This did not address the routing error or the latency increase. It made the wrong answers warmer. CSAT dropped to 3.7 aggregate. Follow-up rate hit 19 percent.</p>
+
+<p><span class="week-marker">Week Five</span>
+The CTO intervened. A dedicated engineer discovered the routing degradation on day two of investigation by comparing the intake classifier's routing distribution against the baseline from three months earlier. The classifier had been retrained on new ticket data that included a batch of 340 mislabeled examples — billing tickets tagged as technical support in the training set. The fix: remove the mislabeled examples and retrain. Routing accuracy returned to 93 percent within 24 hours. The billing agent's latency increase was separately traced to an API rate limit change by a third-party payment processor. A caching layer resolved it.</p>
+
+<p><strong>Total time from first signal to resolution: 35 days. Estimated time with proper thresholds: 3–5 days.</strong> The thirty-day difference — degraded customer experience, one unnecessary prompt change to revert, and a CTO's attention diverted — is the cost of an architecture that observes without deciding.</p>
+</div>
+
+<p>Four structural failures, each mapping to a missing element of the three-phase architecture.</p>
+
+<p><strong>First, the latency threshold was cosmetic.</strong> A yellow dot is not a threshold breach — it is a color. A threshold breach is an event that activates a downstream process. The yellow dot activated nothing. If the Monitor phase had been configured with an explicit latency threshold at μ + 2σ of the baseline distribution, and if that threshold had triggered the Debug phase rather than a color change, the latency issue would have been isolated in week one.</p>
+
+<p><strong>Second, no coordination-level metric existed for routing accuracy.</strong> The intake classifier's routing distribution was not being compared against a baseline. The 5 percent shift from billing to technical was invisible because no one had defined what "correct routing" meant quantitatively and set a threshold on it. This is not an exotic metric — it is a confusion matrix computed on a rolling window. But it must be defined, computed, and thresholded to function as monitoring rather than logging.</p>
+
+<p><strong>Third, the Debug phase was skipped entirely.</strong> The team went from observation ("CSAT is declining") directly to improvement ("make the tone agent more empathetic") without isolating the root cause. This is the most common failure pattern in production AI systems: the <strong>Observe → Improve shortcut</strong> that bypasses diagnosis. Acting without diagnosis is not faster — it is slower, because it introduces a change that must later be investigated and reverted when it fails to help.</p>
+
+<p><strong>Fourth, the improvement was broader than the diagnosis.</strong> Even if declining CSAT had been the correct starting point, "make the tone agent more empathetic" is a change to a component that no diagnosis had identified as faulty. A properly scoped Improve phase would have required a Root Cause Report pointing at the classifier, not the tone agent.</p>
+
+<!-- ============================================================ -->
+<!-- CONNECTIONS TO PROCESSING AND PERFORMANCE -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.8</span> How This Connects to Structure–Property–Processing–Performance</h2>
+
+<p>The relationship between the Monitor → Debug → Improve architecture and the Structure–Property–Processing–Performance tetrahedron is direct, and making it explicit reveals why this architecture is a structural necessity rather than a best practice.</p>
+
+<p>The <strong>structure</strong> of a multi-agent system is its agent graph: the number of agents, their roles, the data flows between them, and the contracts governing those data flows. Structure determines what kinds of failure are possible. A linear pipeline (A → B → C) has different failure modes than a fan-out topology (A → {B, C, D} → E). The Monitor phase must match the structure — a linear pipeline requires sequential trace-back debugging, while a fan-out topology requires parallel root-cause analysis. When you change the structure (add an agent, change a routing rule, introduce a feedback loop), you must re-derive the Monitor phase's metric set and recalibrate thresholds.</p>
+
+<p>The <strong>properties</strong> of the system are its observable behaviors: latency, accuracy, throughput, coherence, fidelity. These are what the Monitor phase measures. Properties are emergent — they arise from the interaction of structure and processing, not from any single component. An agent can be individually healthy while contributing to a systemically unhealthy property, just as a correctly manufactured rivet can be part of a structure that fails because the rivet pattern is wrong.</p>
+
+<p>The <strong>processing</strong> is everything that transforms the system: training data curation, prompt engineering, tool configuration, retrieval index construction, fine-tuning, reindexing schedules, deployment cadences. The Improve phase operates here. Every improvement is a processing change. The critical insight: processing changes modify the system's effective structure (a new prompt changes an agent's behavior, which changes the data it sends downstream), so the Monitor phase must re-validate properties after every change. A processing change that touches multiple components invalidates monitoring for all of them simultaneously, creating a blind spot during the most critical period — the hours immediately after a change is deployed.</p>
+
+<p><strong>Performance</strong> is the business outcome the system exists to serve. Performance degrades → Monitor detects the property change → Debug traces it to a structural or processing cause → Improve applies a processing fix. Without this cycle, performance degradation is simply a fact the team observes and reacts to ad hoc, with no systematic connection to the structural and processing causes that could actually be addressed.</p>
+
+<div class="aside-box">
+  <div class="aside-label">The Threshold as a Structural Joint</div>
+  <p>The threshold occupies the same position in this architecture that a grain boundary occupies in a polycrystalline material. It is the interface between two phases. It determines whether a signal propagates from one phase to the next or is absorbed. A grain boundary that is too weak allows crack propagation; a threshold that is too loose allows degradation propagation. A grain boundary that is too strong creates brittle failure; a threshold that is too tight creates alert fatigue. The threshold is not an accessory to the architecture. It is the load-bearing joint.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- THRESHOLD DESIGN -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.9</span> Threshold Design: The Quantitative Core</h2>
+
+<p>Everything in this architecture rises or falls on threshold quality. A threshold that is too loose is equivalent to no threshold — it fires only after degradation is obvious to humans, at which point the monitoring has added no value. A threshold that is too tight fires constantly, overwhelming the Debug phase with false positives and training the team to ignore alerts. Between these extremes is a narrow band of useful thresholds, and finding that band requires quantitative reasoning, not intuition.</p>
+
+<p>Begin with a <strong>baseline period</strong>. Run the system under normal operating conditions for a minimum of two weeks — long enough to capture daily and weekly cycles in traffic patterns, query distributions, and upstream dependency behavior. Compute the mean and standard deviation of each metric at each level. These baseline statistics are the reference against which degradation is measured.</p>
+
+<p>For metrics that are approximately normally distributed (latency, token counts, most rate-based metrics over sufficiently long windows), set the threshold at μ + kσ, where k controls the tradeoff between sensitivity and specificity. The choice of k is driven by Equation 32.1: the cost of a false positive versus the cost of a missed detection. In practice, <strong>k = 2 is a reasonable starting point</strong> for most agent-level metrics, and <strong>k = 1.5 is appropriate for outcome-level metrics</strong> where the cost of degradation is higher.</p>
+
+<p>For metrics that are not normally distributed — and many coordination-level metrics are not, because they are bounded between 0 and 1 and often exhibit skewed distributions — a percentile-based threshold is more appropriate. Set the threshold at the 95th or 99th percentile of the baseline distribution.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric Level</th>
+      <th>Example Metric</th>
+      <th>Baseline (μ)</th>
+      <th>Threshold Method</th>
+      <th>Typical Trigger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Agent</td>
+      <td>Retry rate</td>
+      <td>3.2%</td>
+      <td>μ + 2σ</td>
+      <td>≥ 5.8%</td>
+    </tr>
+    <tr>
+      <td>Agent</td>
+      <td>P95 latency</td>
+      <td>1.4s</td>
+      <td>μ + 2σ</td>
+      <td>≥ 2.1s</td>
+    </tr>
+    <tr>
+      <td>Coordination</td>
+      <td>Routing accuracy</td>
+      <td>94.0%</td>
+      <td>Percentile floor (P5)</td>
+      <td>≤ 89.5%</td>
+    </tr>
+    <tr>
+      <td>Coordination</td>
+      <td>Handoff fidelity</td>
+      <td>97.1%</td>
+      <td>Percentile floor (P5)</td>
+      <td>≤ 93.8%</td>
+    </tr>
+    <tr>
+      <td>Outcome</td>
+      <td>End-to-end correctness</td>
+      <td>91.3%</td>
+      <td>μ − 1.5σ</td>
+      <td>≤ 87.0%</td>
+    </tr>
+    <tr>
+      <td>Outcome</td>
+      <td>CSAT</td>
+      <td>4.1 / 5.0</td>
+      <td>μ − 1.5σ</td>
+      <td>≤ 3.85</td>
+    </tr>
+  </tbody>
+</table>
+<div class="table-caption"><strong>Table 32.1.</strong> Representative threshold configurations for a multi-agent system. Upward-bad metrics (retry rate, latency) use upper thresholds; downward-bad metrics (accuracy, CSAT) use lower thresholds. All values are illustrative and must be calibrated per system.</div>
+
+<p>Thresholds must also have a <strong>time window</strong>. A single data point exceeding the threshold is not a breach — it is a fluctuation. A threshold breach is defined as the metric exceeding the threshold for a sustained period: the rolling average over a defined window (typically 1–4 hours for agent-level metrics, 4–24 hours for coordination-level metrics, and 24–72 hours for outcome-level metrics) exceeds the threshold value. The window length reflects the time scale at which degradation at that level is meaningful and distinguishable from noise.</p>
+
+<div class="threshold-bar">
+  <div class="zone zone-green" style="width: 55%;">NOMINAL (μ ± 1σ)</div>
+  <div class="zone zone-amber" style="width: 25%;">DEGRADED (1σ–2σ)</div>
+  <div class="zone zone-red" style="width: 20%;">CRITICAL (&gt; 2σ)</div>
+</div>
+<div class="figure-caption"><strong>Figure 32.2.</strong> A single metric's threshold zones. The amber zone logs an elevated-risk signal but does not trigger the Debug phase. The red zone triggers the Debug phase unconditionally.</div>
+
+<p>One final point that is easy to undervalue: <strong>thresholds must be versioned and stored as code</strong>, not as dashboard configurations. When a threshold changes — because the system was updated, the baseline shifted, or the cost model was revised — that change must be tracked with the same rigor as a code change. A threshold silently loosened by an on-call engineer at 2 AM to suppress a noisy alert is a structural modification to the improvement architecture. If it is not reviewed and validated, it creates exactly the kind of blind spot that allowed the financial document system to degrade for six weeks.</p>
+
+<!-- ============================================================ -->
+<!-- THE ARCHITECTURE ARGUMENT -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.10</span> Why Architecture, Not Model Quality, Determines Improvability</h2>
+
+<p>This is the chapter's most counterintuitive claim, and it requires direct confrontation. The prevailing instinct in AI engineering is that when a system produces bad outputs, the model is the problem, and the solution is a better model. Upgrade to a newer version. Fine-tune on more data. Switch to a larger context window. This instinct is wrong — not because model quality doesn't matter, but because model quality is a property of a single component, and the failure modes of multi-agent systems are properties of the architecture.</p>
+
+<p>Consider two systems. <strong>System A</strong> uses a state-of-the-art language model in every agent slot, costs $2.40 per workflow execution, and has no threshold-driven improvement cycle. <strong>System B</strong> uses a model one generation older, costs $0.80 per execution, and implements the full Monitor → Debug → Improve architecture with calibrated thresholds at all three metric levels.</p>
+
+<p>At deployment, System A is more accurate: 94 percent end-to-end correctness versus System B's 89 percent.</p>
+
+<p>Six months later, System A's correctness has drifted to 88 percent. No one noticed until a quarterly business review. System B's correctness has improved to 93 percent, because the improvement cycle caught and corrected four degradation events, two prompt regressions, and one retrieval index drift during the same period.</p>
+
+<p><strong>The crossover happened at month four.</strong> System B, with its inferior model, is now the more accurate system — and the gap is widening. System A is degrading because no architecture exists to detect and correct degradation. The model did not get worse. The world around the model changed. Upstream data sources shifted. User query distributions evolved. Third-party APIs modified their behavior. Tool schemas were updated. The model, frozen at deployment quality, could not adapt because adaptation requires detection, diagnosis, and targeted modification — the three phases — and System A has none of them.</p>
+
+<p>This is not a thought experiment. It is the observed trajectory of every production AI system that relies on model quality as a substitute for improvement architecture.</p>
+
+<div class="equation">
+  Correctness(t) = Correctness(t₀) − δ_drift · t + Σ improvements(tᵢ)<br><br>
+  System A: C(t) = 0.94 − 0.01t + 0 = 0.94 − 0.01t<br>
+  System B: C(t) = 0.89 − 0.01t + 0.01 · n_fixes(t)
+  <span class="eq-label">(32.2)</span>
+</div>
+
+<p>Both systems experience the same drift rate δ (one percentage point per month, consistent with observed degradation in production retrieval-augmented systems). System A has no improvement term. System B's improvement term depends on the number of fixes applied, each recovering approximately one percentage point. If System B catches and fixes one degradation event per month — a conservative estimate for a system with calibrated thresholds — its correctness is stable or improving while System A's is monotonically declining. The model inside each system is identical in kind; the difference is entirely architectural.</p>
+
+<div class="payoff">Model quality determines the starting point. Architecture determines the slope. Given enough time, slope dominates.</div>
+
+<p>You cannot buy your way to improvement with a better model. You can only build your way to improvement with a better loop.</p>
+
+<!-- ============================================================ -->
+<!-- STUDENT ACTIVITIES -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.11</span> Student Activities</h2>
+
+<div class="activity">
+  <div class="activity-label">Problem 32.1 — Threshold Calibration Under Asymmetric Costs</div>
+  <p>A four-agent pipeline processes insurance claims. The retrieval agent's baseline error rate is 2.3% with σ = 0.6%. An unnecessary Debug cycle (false positive) costs the team approximately 8 engineering-hours. A week of undetected degradation costs approximately $45,000 in incorrectly processed claims. Using Equation 32.1, derive the optimal value of k for the retrieval agent's error-rate threshold. Then compute the threshold value. Show your work, state your assumptions about the probability distributions, and explain what happens to the optimal k if the cost of a false positive doubles (for example, because the team shrinks and engineering-hours become scarcer).</p>
+</div>
+
+<div class="activity">
+  <div class="activity-label">Problem 32.2 — Root-Cause Isolation Protocol</div>
+  <p>You are given the following observations from a production multi-agent system at time T: outcome-level end-to-end correctness has dropped from 91% to 84% over a two-week window. Agent-level retry rates are nominal for all agents except Agent C (retrieval), which has increased from 5% to 11%. Coordination-level handoff fidelity between Agent C and Agent D (summarization) has dropped from 96% to 88%. Agent D's own agent-level metrics (latency, completion rate) are nominal when tested in isolation with known-good inputs. Apply the Debug phase protocol from Section 32.5.2. Write the structured root-cause report, including the component identification, fault classification, evidence summary, and confidence score. Identify at least one additional piece of evidence you would want to collect before advancing to the Improve phase, and explain why.</p>
+</div>
+
+<div class="activity">
+  <div class="activity-label">Problem 32.3 — Designing the Monitor Phase for a New Topology</div>
+  <p>You are designing a multi-agent system for automated code review. The system has the following agents: an Intake agent that parses pull requests, a Static Analysis agent that runs linting and type-checking tools, a Semantic Analysis agent that uses an LLM to evaluate code logic and style, a Conflict Detection agent that compares the PR against open PRs for merge conflicts, and an Orchestrator that aggregates results and produces a review comment. Draw the agent graph, including all data flows. For each agent and each inter-agent data flow, define at least one health metric, specify the threshold method (σ-based or percentile-based), and justify the time window for threshold evaluation. Then identify at least one failure mode that would be invisible to agent-level monitoring alone and explain which coordination-level or outcome-level metric would catch it.</p>
+</div>
+
+<div class="activity">
+  <div class="activity-label">Problem 32.4 — Improvement Interference Analysis</div>
+  <p>A multi-agent system has two simultaneously degraded components: Agent A (intent classifier, routing accuracy dropped from 95% to 88%) and Agent C (response generator, coherence score dropped from 4.2 to 3.5 on a 5-point scale). The Debug phase has produced root-cause reports for both. The Improve phase fixes Agent A first: retraining on corrected labels restores routing accuracy to 94%. After this fix, Agent C's coherence score changes from 3.5 to 3.3 — it got worse. Explain, with a specific mechanistic hypothesis, why fixing Agent A could degrade Agent C's coherence score. Then describe the protocol the Improve phase should follow when this occurs: should it revert the Agent A fix, proceed to fix Agent C independently, or take a different approach? Justify your answer quantitatively.</p>
+</div>
+
+<div class="activity">
+  <div class="activity-label">Problem 32.5 — Open Design Problem: The Self-Monitoring Agent</div>
+  <p>Design a "meta-agent" that implements the Monitor phase as an autonomous agent within a multi-agent system. The meta-agent has access to the trace logs, metric computations, and threshold configurations of all other agents. It must compute health metrics on a configurable schedule, evaluate them against thresholds, emit structured breach reports, and — critically — know when to escalate to a human operator rather than activating the Debug phase autonomously. Define the meta-agent's prompt template, its tool set, its input schema (what data it consumes from the other agents), and its output schema (the breach report format). Then identify at least two failure modes of the meta-agent itself and describe how you would monitor the monitor. There is no single correct answer; you will be evaluated on the coherence of your design, the specificity of your failure mode analysis, and the rigor of your escalation criteria.</p>
+</div>
+
+<div class="activity">
+  <div class="activity-label">Problem 32.6 — LLM-Assisted Debugging (With Human Decision Node)</div>
+  <p>You are investigating a degraded multi-agent system using an LLM as a debugging assistant. The LLM has access to 200 trace logs from the degraded period and 200 from the baseline period. Design a prompt sequence that uses the LLM to: (a) identify statistical differences between the degraded and baseline traces, (b) generate three candidate root-cause hypotheses ranked by likelihood, and (c) propose a specific diagnostic test for each hypothesis. You must specify: what cognitive load the LLM is reducing (what would the human have to do manually without it), what higher-order thinking the human must still perform (what judgment the LLM cannot make), and the explicit decision point where the human evaluates the LLM's output before any change is made to the production system. Produce the prompt templates, the expected output schemas, and a one-paragraph justification of where the human decision node is placed and why it cannot be removed.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER END -->
+<!-- ============================================================ -->
+
+<h2><span class="section-num">32.12</span> Chapter Summary</h2>
+
+<p>The difference between a multi-agent system that degrades and one that improves is not the quality of the models inside it. It is the presence or absence of a threshold-driven control loop that converts raw observability signals into enforced intervention decisions. The <strong>Monitor</strong> phase computes bounded health metrics at three levels — agent, coordination, and outcome — and evaluates them against quantitative thresholds calibrated during a baseline period. The <strong>Debug</strong> phase, activated only by a threshold breach, traces degradation backward through the system's causal graph to isolate the root cause with structured evidence rather than intuition. The <strong>Improve</strong> phase applies a scoped, single-variable change based on a validated Root Cause Report and re-validates system health after the change. Each transition between phases is gated by a quantitative criterion: the threshold for Monitor → Debug, the confidence score for Debug → Improve, and the metric recovery for Improve → Monitor. Without these gates, teams observe without deciding, guess without diagnosing, and change without validating — the pattern that turned a forty-minute fix into a six-week degradation in the financial document system and a three-day diagnosis into a thirty-five-day decline in the customer support pipeline.</p>
+
+<div class="payoff">Architecture determines whether improvement is possible. Thresholds are the mechanism that makes the architecture work. Everything else — dashboards, models, trace logs, engineering talent — is necessary infrastructure. But infrastructure without architecture is surveillance without control.</div>
+
+</div>
+</body>
+</html>
